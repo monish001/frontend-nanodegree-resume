@@ -74,42 +74,44 @@ var bio = {
     this.appendSkills();
   }
 }
-
+var work = {
+  jobs: [{
+    employer: '',
+    title: '',
+    location: '',
+    dates: '', // (Can be 'in progress')
+    description: ''
+  }],
+  display: function(){}
+};
+var projects = {
+  projects: [{
+    title: '',
+    dates: '', // (works with a hyphen between them)
+    description: '',
+    images: [''] // urls
+  }],
+  display: function(){}
+};
+var education = {
+  schools: [{
+    name: 'Thapar University, Patiala',
+    location: 'Punjab, India',
+    degree: 'BE',
+    majors: ['CS'],
+    dates: 'Jun 2008 - Jun 2012',
+    url: 'http://www.thapar.edu'
+  }],
+  onlineCourses: [{
+    title: 'Intro to Machine Learning',
+    school: 'Udacity',
+    dates: 'Nov 2015 - Dec 2015',
+    url: 'http://udacity.com/TODO'
+  }],
+  display: function(){}
+};
 
 bio.display();
-
-/*
-education contains:
-
-      schools: array of objects with
-           name: string
-           location: string
-           degree: string
-           majors: array of strings
-           dates: string (works with a hyphen between them)
-           url: string
-      onlineCourses: array of objects with
-           title: string
-           school: string
-           dates: string (works with a hyphen between them)
-           url: string
-      display: function
-work contains
-
-      jobs: array of objects with
-           employer: string
-           title: string
-           location: string
-           dates: string (Can be 'in progress')
-           description: string
-      display: function
-projects contains:
-
-      projects: array of objects with
-            title: string
-            dates: string (works with a hyphen between them)
-            description: string
-            images: array with string urls
-      display: function
-
-*/
+work.display();
+projects.display();
+education.display();
