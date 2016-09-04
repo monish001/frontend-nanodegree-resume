@@ -69,12 +69,6 @@ var work = {
     location: 'Bangalore, India',
     description: 'Worked on various projects based on front-end technologies like JavaScript, JQuery etc.'
   }],
-// var HTMLworkStart = '<div class="work-entry"></div>';
-// var HTMLworkEmployer = '<a href="#">%data%';
-// var HTMLworkTitle = ' - %data%</a>';
-// var HTMLworkDates = '<div class="date-text">%data%</div>';
-// var HTMLworkLocation = '<div class="location-text">%data%</div>';
-// var HTMLworkDescription = '<p><br>%data%</p>';
   getJobDesc: function(job){
     return $(HTMLworkStart)
       .append(HTMLworkEmployer.replace('%data%', job.employer))
@@ -86,19 +80,41 @@ var work = {
   display: function(){
     var self = this;
     this.jobs.forEach(function(job, idx){
-      jobDesc = self.getJobDesc(job);
-      $('#workExperience').append(jobDesc);
+      var jobHtml = self.getJobDesc(job);
+      $('#workExperience').append(jobHtml);
     });
   }
 };
 var projects = {
   projects: [{
-    title: '',
-    dates: '', // (works with a hyphen between them)
-    description: '',
-    images: [''] // urls
+    title: 'Tulna',
+    dates: 'Jul 2014', // (works with a hyphen between them)
+    description: 'It is a book price comparison app for windows 8',
+    images: [
+      'https://store-images.s-microsoft.com/image/apps.25886.9007199266614075.00370475-a568-430d-bb6d-df6023a2454b.5225d5e0-7ea4-422f-b33b-9a90f72ad39a?w=471&h=265&q=60',
+      'https://store-images.s-microsoft.com/image/apps.55965.9007199266614075.37b1de7e-4bef-45e3-b89e-ebe023197394.f8952ba3-f180-4b42-9a56-834639cc5023?w=471&h=265&q=60'
+    ] // urls
   }],
-  display: function(){}
+  getProjectDesc: function(project){
+    var jobHtml = $(HTMLprojectStart)
+      .append(HTMLprojectTitle.replace('%data%', project.title))
+      .append(HTMLprojectDates.replace('%data%', project.dates))
+      .append(HTMLprojectDescription.replace('%data%', project.description));
+
+      project.images.forEach(function(imageUrl, idx){
+        var self = this;
+        jobHtml.append(HTMLprojectImage.replace('%data%', imageUrl));
+      });
+
+      return jobHtml;
+  },
+  display: function(){
+    var self = this;
+    this.projects.forEach(function(project, idx){
+      var projectHtml = self.getProjectDesc(project);
+      $('#projects').append(projectHtml);
+    });
+  }
 };
 var education = {
   schools: [{
@@ -115,7 +131,45 @@ var education = {
     dates: 'Nov 2015 - Dec 2015',
     url: 'http://udacity.com/TODO'
   }],
-  display: function(){}
+  // var HTMLschoolStart = '<div class="education-entry"></div>';
+  // var HTMLschoolName = '<a href="#">%data%';
+  // var HTMLschoolDegree = ' -- %data%</a>';
+  // var HTMLschoolDates = '<div class="date-text">%data%</div>';
+  // var HTMLschoolLocation = '<div class="location-text">%data%</div>';
+  // var HTMLschoolMajor = '<em><br>Major: %data%</em>';
+  getSchHtml: function(sch){
+    return $(HTMLschoolStart)
+      .append(HTMLschoolName.replace('%data%', sch.name))
+      .append(HTMLschoolDegree.replace('%data%', sch.degree))
+      .append(HTMLschoolDates.replace('%data%', sch.dates))
+      .append(HTMLschoolLocation.replace('%data%', sch.location))
+      .append(HTMLschoolMajor.replace('%data%', sch.majors.join(', ')));
+  },
+  // var HTMLonlineClasses = '<h3>Online Classes</h3>';
+  // var HTMLonlineTitle = '<a href="#">%data%';
+  // var HTMLonlineSchool = ' - %data%</a>';
+  // var HTMLonlineDates = '<div class="date-text">%data%</div>';
+  // var HTMLonlineURL = '<br><a href="#">%data%</a>';
+  getCourHtml: function(course){
+    return $(HTMLschoolStart)
+      .append(HTMLonlineTitle.replace('%data%', course.title))
+      .append(HTMLonlineSchool.replace('%data%', course.school))
+      .append(HTMLonlineDates.replace('%data%', course.dates))
+      .append(HTMLonlineURL.replace('%data%', course.url));
+  },
+  display: function(){
+    var self = this;
+    this.schools.forEach(function(sch, idx){
+      var schHtml = self.getSchHtml(sch);
+      $('#education').append(schHtml);
+    });
+
+    $('#education').append(HTMLonlineClasses);
+    this.onlineCourses.forEach(function(cour, idx){
+      var courHtml = self.getCourHtml(cour);
+      $('#education').append(courHtml);
+    });
+  }
 };
 
 bio.display();
