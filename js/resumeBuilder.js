@@ -1,25 +1,6 @@
 /*
-This is empty on purpose! Your code to build the resume will go here.
+ This is empty on purpose! Your code to build the resume will go here.
  */
-
-/*
-$('#main').append('Monish Gupta')
-
-var awesomeThoughts = "I am Monish and I am AWESOME."
-$('#main').append(awesomeThoughts);
-
-var funThoughts = awesomeThoughts.replace("AWESOME", "FUN");
-$('#main').append(funThoughts);
-
-
-var name = 'Monish Gupta', role = 'Senior front-end developer';
-var formattedName = HTMLheaderName.replace('%data%', name);
-var formattedRole = HTMLheaderRole.replace('%data%', role);
-
-
-$('#main').prepend(formattedRole);
-$('#main').prepend(formattedName);
-*/
 
 var bio = {
   name: 'Monish Gupta',
@@ -76,13 +57,39 @@ var bio = {
 }
 var work = {
   jobs: [{
-    employer: '',
-    title: '',
-    location: '',
-    dates: '', // (Can be 'in progress')
-    description: ''
+    employer: 'Time Inc. India',
+    title: 'Sr. Software Engineer',
+    dates: 'Mar 2016 - in progress',
+    location: 'Bangalore, India',
+    description: 'Working on reactJS projects.'
+  }, {
+    employer: 'Microsoft, India',
+    title: 'Software Engineer',
+    dates: 'Jun 2012 - Jul 2015', // (Can be 'in progress')
+    location: 'Bangalore, India',
+    description: 'Worked on various projects based on front-end technologies like JavaScript, JQuery etc.'
   }],
-  display: function(){}
+// var HTMLworkStart = '<div class="work-entry"></div>';
+// var HTMLworkEmployer = '<a href="#">%data%';
+// var HTMLworkTitle = ' - %data%</a>';
+// var HTMLworkDates = '<div class="date-text">%data%</div>';
+// var HTMLworkLocation = '<div class="location-text">%data%</div>';
+// var HTMLworkDescription = '<p><br>%data%</p>';
+  getJobDesc: function(job){
+    return $(HTMLworkStart)
+      .append(HTMLworkEmployer.replace('%data%', job.employer))
+      .append(HTMLworkTitle.replace('%data%', job.title))
+      .append(HTMLworkDates.replace('%data%', job.dates))
+      .append(HTMLworkLocation.replace('%data%', job.location))
+      .append(HTMLworkDescription.replace('%data%', job.description));
+  },
+  display: function(){
+    var self = this;
+    this.jobs.forEach(function(job, idx){
+      jobDesc = self.getJobDesc(job);
+      $('#workExperience').append(jobDesc);
+    });
+  }
 };
 var projects = {
   projects: [{
