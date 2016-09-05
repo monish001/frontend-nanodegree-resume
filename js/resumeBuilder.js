@@ -63,12 +63,14 @@ var bio = {
 var work = {
   jobs: [{
     employer: 'Time Inc. India',
+    employerUrl: 'http://www.timeincindia.com/',
     title: 'Sr. Software Engineer',
     dates: 'Mar 2016 - in progress',
     location: 'Bangalore, India',
     description: 'Working on projects ranging from research on best SEO practices to driving web apps from scratch using ReactJS, Vanilla JS, NodeJS, Webpack, AWS for hosting.'
   }, {
     employer: 'Microsoft, India',
+    employerUrl: 'https://www.microsoft.com/en-in/about/',
     title: 'Software Engineer',
     dates: 'Jun 2012 - Jul 2015', // (Can be 'in progress')
     location: 'Bangalore, India',
@@ -76,7 +78,7 @@ var work = {
   }],
   getJobDesc: function(job){
     return $(HTMLworkStart)
-      .append(HTMLworkEmployer.replace('%data%', job.employer + ' - ' + job.title))
+      .append(HTMLworkEmployer.replace('%data%', job.employer + ' - ' + job.title).replace('#', job.employerUrl))
       //.append(HTMLworkTitle.replace('%data%', job.title))
       .append(HTMLworkDates.replace('%data%', job.dates))
       .append(HTMLworkLocation.replace('%data%', job.location))
@@ -93,6 +95,7 @@ var work = {
 var projects = {
   projects: [{
     title: 'Tulna',
+    url: 'http://apps.microsoft.com/windows/en-in/app/tulna/d3320f9d-3f6b-42a4-8f71-af4a540d075e',
     dates: 'Jul 2014', // (works with a hyphen between them)
     description: 'This is a windows 8 app that enables users to compare book prices across different e-commerce websites. This was built as part of an internal hackathon at Microsoft.',
     images: [
@@ -102,7 +105,7 @@ var projects = {
   }],
   getProjectDesc: function(project){
     var jobHtml = $(HTMLprojectStart)
-      .append(HTMLprojectTitle.replace('%data%', project.title))
+      .append(HTMLprojectTitle.replace('%data%', project.title).replace('#', project.url))
       .append(HTMLprojectDates.replace('%data%', project.dates))
       .append(HTMLprojectDescription.replace('%data%', project.description));
 
@@ -144,7 +147,7 @@ var education = {
   // var HTMLschoolMajor = '<em><br>Major: %data%</em>';
   getSchHtml: function(sch){
     return $(HTMLschoolStart)
-      .append(HTMLschoolName.replace('%data%', sch.name + ' - ' + sch.degree))
+      .append(HTMLschoolName.replace('%data%', sch.name + ' - ' + sch.degree).replace('#', sch.url))
       //.append(HTMLschoolDegree.replace('%data%', sch.degree))
       .append(HTMLschoolDates.replace('%data%', sch.dates))
       .append(HTMLschoolLocation.replace('%data%', sch.location))
@@ -157,7 +160,7 @@ var education = {
   // var HTMLonlineURL = '<br><a href="#">%data%</a>';
   getCourHtml: function(course){
     return $(HTMLschoolStart)
-      .append(HTMLonlineTitle.replace('%data%', course.title + ' - ' + course.school))
+      .append(HTMLonlineTitle.replace('%data%', course.title + ' - ' + course.school).replace('#', course.url))
       //.append(HTMLonlineSchool.replace('%data%', course.school))
       .append(HTMLonlineDates.replace('%data%', course.dates))
       .append(HTMLonlineURL.replace('%data%', course.url));
