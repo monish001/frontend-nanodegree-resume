@@ -35,8 +35,9 @@
       }
     },
     appendOthers: function(){
-      $('#header').append(HTMLbioPic.replace('%data%', this.biopic));
-      $('#header').append(HTMLwelcomeMsg.replace('%data%', this.welcomeMessage));
+      $('#header')
+        .append(HTMLbioPic.replace('%data%', this.biopic))
+        .append(HTMLwelcomeMsg.replace('%data%', this.welcomeMessage));
     },
     appendSkills: function(){
       if(!this.skills || this.skills.length === 0){
@@ -143,12 +144,6 @@
       dates: 'Nov 2015 - Dec 2015',
       url: 'https://www.udacity.com/course/intro-to-machine-learning--ud120'
     }],
-    // var HTMLschoolStart = '<div class="education-entry"></div>';
-    // var HTMLschoolName = '<a href="#">%data%';
-    // var HTMLschoolDegree = ' -- %data%</a>';
-    // var HTMLschoolDates = '<div class="date-text">%data%</div>';
-    // var HTMLschoolLocation = '<div class="location-text">%data%</div>';
-    // var HTMLschoolMajor = '<em><br>Major: %data%</em>';
     getSchHtml: function(sch){
       return $(HTMLschoolStart)
         .append(HTMLschoolName.replace('%data%', sch.name + ' - ' + sch.degree).replace('#', sch.url))
@@ -157,11 +152,6 @@
         .append(HTMLschoolLocation.replace('%data%', sch.location))
         .append(HTMLschoolMajor.replace('%data%', sch.majors.join(', ')));
     },
-    // var HTMLonlineClasses = '<h3>Online Classes</h3>';
-    // var HTMLonlineTitle = '<a href="#">%data%';
-    // var HTMLonlineSchool = ' - %data%</a>';
-    // var HTMLonlineDates = '<div class="date-text">%data%</div>';
-    // var HTMLonlineURL = '<br><a href="#">%data%</a>';
     getCourHtml: function(course){
       return $(HTMLschoolStart)
         .append(HTMLonlineTitle.replace('%data%', course.title + ' - ' + course.school).replace('#', course.url))
