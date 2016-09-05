@@ -24,7 +24,7 @@ var bio = {
     var formattedRole = HTMLheaderRole.replace('%data%', this.role);
     $('#header').prepend(formattedRole);
   },
-  appendContacts: function(){
+  appendContacts: function(containerId){
     var formattedContact;
     for(contact in this.contacts){
       if(!this.contacts.hasOwnProperty(contact)){
@@ -33,7 +33,7 @@ var bio = {
       formattedContact = HTMLcontactGeneric
         .replace('%contact%', contact)
         .replace('%data%', this.contacts[contact]);
-      $('#topContacts').append(formattedContact);
+      $('#' + containerId).append(formattedContact);
     }
   },
   appendOthers: function(){
@@ -53,7 +53,8 @@ var bio = {
     this.appendRole();
     this.appendName();
 
-    this.appendContacts();
+    this.appendContacts('topContacts');
+    this.appendContacts('footerContacts');
 
     this.appendOthers();
     this.appendSkills();
