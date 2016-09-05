@@ -112,7 +112,7 @@ var projects = {
       .append(HTMLprojectDates.replace('%data%', project.dates))
       .append(HTMLprojectDescription.replace('%data%', project.description));
 
-      project.images.forEach(function(imageUrl, idx){
+      project.images && project.images.length && project.images.forEach(function(imageUrl, idx){
         var self = this;
         jobHtml.append(HTMLprojectImage.replace('%data%', imageUrl));
       });
