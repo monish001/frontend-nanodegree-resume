@@ -16,6 +16,7 @@ var bio = {
   skills: ['Web UI', 'NodeJS', 'Saving the world'],
   biopic: 'images/me-100.jpg',
   appendName: function(){
+    //this.name = inName(this.name);
     var formattedName = HTMLheaderName.replace('%data%', this.name);
     $('#header').prepend(formattedName);
   },
@@ -40,6 +41,9 @@ var bio = {
     $('#header').append(HTMLwelcomeMsg.replace('%data%', this.welcomeMessage));
   },
   appendSkills: function(){
+    if(!this.skills || this.skills.length === 0){
+      return;
+    }
     $('#header').append(HTMLskillsStart);
     this.skills.forEach(function(skill, idx){
       $('#skills').append(HTMLskills.replace('%data%', skill));
@@ -176,3 +180,14 @@ bio.display();
 work.display();
 projects.display();
 education.display();
+
+//$('#main').append(internationalizeButton);
+function capitalize(str){
+  return str[0].toUpperCase() + str.substr(1);
+}
+function inName(firstAndLastName){
+  var names = firstAndLastName.split(' ');
+  return capitalize(names[0]) + ' ' + names[1].toUpperCase();
+}
+
+$('#mapDiv').append(googleMap);
