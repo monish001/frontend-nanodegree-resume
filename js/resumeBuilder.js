@@ -4,16 +4,16 @@
 
 var bio = {
   name: 'Monish Gupta',
-  role: 'Senior front-end engineer',
+  role: 'SDE III',
   contacts: {
     mobile: '(+91) 98 4567 XXXX',
-    email: 'monish.gupta1@gmail.com',
+    email: 'monish****@gmail.com',
     github: 'monish001',
     twitter: '@monish001',
     location: 'Bangalore'
   },
-  welcomeMessage: 'Welcome to my resume page',
-  skills: ['Web UI', 'NodeJS', 'Saving the world'],
+  welcomeMessage: 'Welcome to my introduction page',
+  skills: ['Developing responsive websites', 'Commuting on a ever learning trajectory', 'Saving the universe'],
   biopic: 'images/me-100.jpg',
   appendName: function(){
     //this.name = inName(this.name);
@@ -66,18 +66,18 @@ var work = {
     title: 'Sr. Software Engineer',
     dates: 'Mar 2016 - in progress',
     location: 'Bangalore, India',
-    description: 'Working on reactJS projects.'
+    description: 'Working on projects ranging from research on best SEO practices to driving web apps from scratch using ReactJS, Vanilla JS, NodeJS, Webpack, AWS for hosting.'
   }, {
     employer: 'Microsoft, India',
     title: 'Software Engineer',
     dates: 'Jun 2012 - Jul 2015', // (Can be 'in progress')
     location: 'Bangalore, India',
-    description: 'Worked on various projects based on front-end technologies like JavaScript, JQuery etc.'
+    description: 'Implemented and drove web UI features across various projects. Features ranging from file upload, enabling authentication etc. to incorporating design patterns for better code maintainability.'
   }],
   getJobDesc: function(job){
     return $(HTMLworkStart)
-      .append(HTMLworkEmployer.replace('%data%', job.employer))
-      .append(HTMLworkTitle.replace('%data%', job.title))
+      .append(HTMLworkEmployer.replace('%data%', job.employer + ' - ' + job.title))
+      //.append(HTMLworkTitle.replace('%data%', job.title))
       .append(HTMLworkDates.replace('%data%', job.dates))
       .append(HTMLworkLocation.replace('%data%', job.location))
       .append(HTMLworkDescription.replace('%data%', job.description));
@@ -94,7 +94,7 @@ var projects = {
   projects: [{
     title: 'Tulna',
     dates: 'Jul 2014', // (works with a hyphen between them)
-    description: 'It is a book price comparison app for windows 8',
+    description: 'This is a windows 8 app that enables users to compare book prices across different e-commerce websites. This was built as part of an internal hackathon at Microsoft.',
     images: [
       'https://store-images.s-microsoft.com/image/apps.25886.9007199266614075.00370475-a568-430d-bb6d-df6023a2454b.5225d5e0-7ea4-422f-b33b-9a90f72ad39a?w=471&h=265&q=60',
       'https://store-images.s-microsoft.com/image/apps.55965.9007199266614075.37b1de7e-4bef-45e3-b89e-ebe023197394.f8952ba3-f180-4b42-9a56-834639cc5023?w=471&h=265&q=60'
@@ -134,7 +134,7 @@ var education = {
     title: 'Intro to Machine Learning',
     school: 'Udacity',
     dates: 'Nov 2015 - Dec 2015',
-    url: 'http://udacity.com/TODO'
+    url: 'https://www.udacity.com/course/intro-to-machine-learning--ud120'
   }],
   // var HTMLschoolStart = '<div class="education-entry"></div>';
   // var HTMLschoolName = '<a href="#">%data%';
@@ -144,8 +144,8 @@ var education = {
   // var HTMLschoolMajor = '<em><br>Major: %data%</em>';
   getSchHtml: function(sch){
     return $(HTMLschoolStart)
-      .append(HTMLschoolName.replace('%data%', sch.name))
-      .append(HTMLschoolDegree.replace('%data%', sch.degree))
+      .append(HTMLschoolName.replace('%data%', sch.name + ' - ' + sch.degree))
+      //.append(HTMLschoolDegree.replace('%data%', sch.degree))
       .append(HTMLschoolDates.replace('%data%', sch.dates))
       .append(HTMLschoolLocation.replace('%data%', sch.location))
       .append(HTMLschoolMajor.replace('%data%', sch.majors.join(', ')));
@@ -157,8 +157,8 @@ var education = {
   // var HTMLonlineURL = '<br><a href="#">%data%</a>';
   getCourHtml: function(course){
     return $(HTMLschoolStart)
-      .append(HTMLonlineTitle.replace('%data%', course.title))
-      .append(HTMLonlineSchool.replace('%data%', course.school))
+      .append(HTMLonlineTitle.replace('%data%', course.title + ' - ' + course.school))
+      //.append(HTMLonlineSchool.replace('%data%', course.school))
       .append(HTMLonlineDates.replace('%data%', course.dates))
       .append(HTMLonlineURL.replace('%data%', course.url));
   },
