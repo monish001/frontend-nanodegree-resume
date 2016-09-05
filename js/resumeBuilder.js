@@ -1,7 +1,3 @@
-/*
- This is empty on purpose! Your code to build the resume will go here.
- */
-
 var bio = {
   name: 'Monish Gupta',
   role: 'SDE III',
@@ -26,7 +22,7 @@ var bio = {
   },
   appendContacts: function(containerId){
     var formattedContact;
-    for(contact in this.contacts){
+    for(var contact in this.contacts){
       if(!this.contacts.hasOwnProperty(contact)){
         return;
       }
@@ -59,7 +55,7 @@ var bio = {
     this.appendOthers();
     this.appendSkills();
   }
-}
+};
 var work = {
   jobs: [{
     employer: 'Time Inc. India',
