@@ -63,6 +63,8 @@ var bio = {
 var work = {
   jobs: [{
     employer: 'Time Inc. India',
+
+    /* Added employerUrl that is not in the given schema as it is needed in the anchor tag. */
     employerUrl: 'http://www.timeincindia.com/',
     title: 'Sr. Software Engineer',
     dates: 'Mar 2016 - in progress',
@@ -95,6 +97,7 @@ var work = {
 var projects = {
   projects: [{
     title: 'Tulna',
+    /* Added url that is not in the given schema as this is needed in the anchor tag. */
     url: 'http://apps.microsoft.com/windows/en-in/app/tulna/d3320f9d-3f6b-42a4-8f71-af4a540d075e',
     dates: 'Jul 2014', // (works with a hyphen between them)
     description: 'This is a windows 8 app that enables users to compare book prices across different e-commerce websites. This was built as part of an internal hackathon at Microsoft.',
